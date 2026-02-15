@@ -2,7 +2,7 @@
 
  
  - Edit the file in Notepad
-   - Update line 1 where I have `C:\Games\Steam\steamapps\common\DuneAwakening` to the path where your game is installed
+   - Update line 3 where I have `C:\Games\Steam\steamapps\common\DuneAwakening` to the path where your game is installed
      - You can find this in Steam by going to **Dune Awakening > Properties > Installed Files > Browse**
    - Save the file
  - Put the script anywhere you like (I think) - For simplicity I put it in my game folder, do that if you have issues with it elsewhere.
