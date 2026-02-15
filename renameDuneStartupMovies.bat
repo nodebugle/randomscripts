@@ -1,13 +1,27 @@
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\StartupUE4.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\StartupUE4.bak"
+@echo off
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Unreal_2s.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Unreal_2s.bak"
+set "dunePath=C:\Games\Steam\steamapps\common\DuneAwakening"
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_LevelInfinite_2s.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_LevelInfinite_2s.bak"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "StartupUE4"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "Logo_4K_Unreal_2s"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "Logo_4K_LevelInfinite_2s"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "Logo_4K_Legendary_2s"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "Logo_4K_Funcom_2s"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies" "EpilepsyInfo"
+call :safeRename "%dunePath%\DuneSandbox\Content\Movies\IntroMovie" "InitialIntro4k"
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Legendary_2s.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Legendary_2s.bak"
+start "" "%dunePath%\DuneSandbox.exe"
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Funcom_2s.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\Logo_4K_Funcom_2s.bak"
+goto :eof
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\EpilepsyInfo.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\EpilepsyInfo.bak"
 
-ren "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\IntroMovie\InitialIntro4k.bk2" "C:\Games\Steam\steamapps\common\DuneAwakening\DuneSandbox\Content\Movies\IntroMovie\InitialIntro4k.bak"
+:safeRename
+REM %1 = folder
+REM %2 = filename without extension
+
+if exist "%~1\%~2.bk2" (
+    if exist "%~1\%~2.bak" del "%~1\%~2.bak"
+    ren "%~1\%~2.bk2" "%~2.bak"
+)
+
+goto :eof
